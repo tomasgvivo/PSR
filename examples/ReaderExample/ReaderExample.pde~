@@ -1,0 +1,21 @@
+import com.tomasgonzalezvivo.p5.psr.PSRReader;
+
+PSRReader reader;
+
+public void setup()
+{
+  size(400, 300);
+  reader = new PSRReader(savePath("example.psr"), this);
+  reader.start();
+}
+
+public void draw()
+{
+  reader.nextFrame();
+  if(reader.isEOF())
+  {
+    println("End of file!");
+    background(30);
+    noLoop();
+  }
+}
